@@ -47,8 +47,8 @@ if(isset($_GET['url'])) {
         errmsg("Bad hacker! Don't use /var/log");
     if(stripos($url, "flag") !== FALSE)
         errmsg("Bad hacker! Don't use flag");
-    if(stripos($url, "/var/www/html") !== FALSE)
-        errmsg("Bad hacker! Don't use /var/www/html");
+    //if(stripos($url, "/var/www/html") !== FALSE)
+    //    errmsg("Bad hacker! Don't use /var/www/html");
     if(stripos($url, "index.php") !== FALSE)
         errmsg("Bad hacker! Don't use index.php");
 
