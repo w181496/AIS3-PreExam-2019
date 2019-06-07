@@ -2,6 +2,15 @@
 
 佛系出題，每題都不擋非預期，每題都有多種簡單解法 (´・ω・`)
 
+| Name  | Tags   | Solves | Category |
+|-------|------|-------|--------|----------|
+| SimpleWindow  | ServiceWorker, warmup | 316 | Web  |
+| 3v4l  | PHP, Bash, seadog | 28 | Web  |
+| BabySSRF | SSRF, PHP, FastCGI | 3 |  Web  |
+| Are you admin?  |	Ruby, JSON | 181 | Misc  |
+| Pysh  | Python, Bash | 64 |  Misc
+
+
 ## Web
 
 ### Simple Window
