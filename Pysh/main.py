@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import os
+import sys
 
 black_list = "bcfghijkmnoqstuvwxz!@#|[]{}\"'&*()?01234569"
 

